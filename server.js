@@ -6,6 +6,15 @@ const nodemailer = require('nodemailer');
 const app = express();
 const PORT = 3000;
 
+console.log('ENV CHECK:', {
+  SMTP_HOST: process.env.SMTP_HOST || 'UNDEFINED',
+  SMTP_PORT: process.env.SMTP_PORT || 'UNDEFINED',
+  SMTP_USER: process.env.SMTP_USER ? 'OK' : 'UNDEFINED',
+  SMTP_PASS: process.env.SMTP_PASS ? 'OK' : 'UNDEFINED',
+  MAIL_TO: process.env.MAIL_TO || 'UNDEFINED',
+  N8N_WEBHOOK_URL: process.env.N8N_WEBHOOK_URL ? 'OK' : 'UNDEFINED',
+});
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
